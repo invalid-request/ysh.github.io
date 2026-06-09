@@ -442,7 +442,7 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
     <span class="pl-k">for</span> (<span class="pl-k">int</span> len = <span class="pl-c1">2</span>; len &lt;= n; len++) {
         <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i + len -<span class="pl-c1">1</span> &lt;= n; i++) {
             <span class="pl-k">int</span> j = i + len -<span class="pl-c1">1</span>;
-            <span class="pl-k">int</span> min_cost = INT_MAX;
+            <span class="pl-k">int</span> min_cost = <span class="pl-c1">INT_MAX</span>;
             
             <span class="pl-c"><span class="pl-c">//</span> 遍历最后一个乘号的位置，k代表最后运算的乘号左边那个矩阵的下标</span>
             <span class="pl-k">for</span> (<span class="pl-k">int</span> k = i; k &lt;= j - <span class="pl-c1">1</span>; ++k) {
@@ -542,7 +542,7 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
 <li>返回<code class="notranslate">dist[t][1~M]</code>的最小值。</li>
 </ol>
 <h2>关键代码</h2>
-<div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-k">int</span> INF = INT_MAX / <span class="pl-c1">2</span>;
+<div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">INF</span> = <span class="pl-c1">INT_MAX</span> / <span class="pl-c1">2</span>;
 
 <span class="pl-c"><span class="pl-c">//</span> 自定义无向边结构体，存储当前节点到另一个节点to的距离len</span>
 <span class="pl-k">struct</span> <span class="pl-en">Edge</span> {
@@ -569,7 +569,7 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
 <span class="pl-c"><span class="pl-c">//</span> 函数返回能走的最短路径长度</span>
 <span class="pl-k">int</span> <span class="pl-en">solve</span>(Graph&amp; a, vector&lt;<span class="pl-k">int</span>&gt;&amp; c, <span class="pl-k">int</span> n, <span class="pl-k">int</span> s, <span class="pl-k">int</span> t, <span class="pl-k">int</span> M) {
     <span class="pl-c"><span class="pl-c">//</span> dist[国家][花费] = 最短路程</span>
-    vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; <span class="pl-c1">dist</span>(n + <span class="pl-c1">1</span>, vector&lt;<span class="pl-k">int</span>&gt;(M + <span class="pl-c1">1</span>, INF));
+    vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; <span class="pl-c1">dist</span>(n + <span class="pl-c1">1</span>, vector&lt;<span class="pl-k">int</span>&gt;(M + <span class="pl-c1">1</span>, <span class="pl-c1">INF</span>));
     dist[s][<span class="pl-c1">0</span>] = <span class="pl-c1">0</span>;
 
     <span class="pl-c"><span class="pl-c">//</span> priority_queue&lt; 元素类型, 底层容器, 比较规则 &gt; 队列名;</span>
@@ -614,12 +614,12 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
         }
     }
 
-    <span class="pl-k">int</span> ans = INF;
+    <span class="pl-k">int</span> ans = <span class="pl-c1">INF</span>;
     <span class="pl-c"><span class="pl-c">//</span> 遍历所有金额下最短路径</span>
     <span class="pl-k">for</span> (<span class="pl-k">int</span> co = <span class="pl-c1">0</span>; co &lt;= M; ++co) {
         ans = <span class="pl-c1">min</span>(ans, dist[t][co]);
     }
-    <span class="pl-k">return</span> ans == INF ? -<span class="pl-c1">1</span> : ans;
+    <span class="pl-k">return</span> ans == <span class="pl-c1">INF</span> ? -<span class="pl-c1">1</span> : ans;
 }</pre></div>
 <hr>
 <h1>1024 最优搜索二叉树</h1>
@@ -639,7 +639,7 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-c"><span class="pl-c">//</span> a是关键字概率序列，c是区间概率序列</span>
 <span class="pl-k">double</span> <span class="pl-en">f</span>(vector&lt;<span class="pl-k">double</span>&gt;&amp; a, vector&lt;<span class="pl-k">double</span>&gt;&amp; c, <span class="pl-k">int</span> n) {
     <span class="pl-c"><span class="pl-c">//</span> dp[i][j]：表示由第 i ~ j 个关键字构成的子树，对应的最小期望代价</span>
-    vector&lt;vector&lt;<span class="pl-k">double</span>&gt;&gt; <span class="pl-c1">dp</span>(n,vector&lt;<span class="pl-k">double</span>&gt;(n,DBL_MAX));
+    vector&lt;vector&lt;<span class="pl-k">double</span>&gt;&gt; <span class="pl-c1">dp</span>(n,vector&lt;<span class="pl-k">double</span>&gt;(n,<span class="pl-c1">DBL_MAX</span>));
 
     <span class="pl-c"><span class="pl-c">//</span> x[i][j]：记录区间 [i,j] 构成的子树的最优根节点下标</span>
     vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; <span class="pl-c1">x</span>(n,vector&lt;<span class="pl-k">int</span>&gt;(n,-<span class="pl-c1">1</span>));
@@ -904,13 +904,13 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
 <span class="pl-c"><span class="pl-c">//</span> 图a中有n个节点，s为起点，t为终点，函数返回s到t最短距离，不可到达返回-1</span>
 <span class="pl-k">int</span> <span class="pl-en">dij</span>(<span class="pl-k">int</span> n, <span class="pl-k">int</span> s, <span class="pl-k">int</span> t, Graph&amp; a) {
     vector&lt;<span class="pl-k">bool</span>&gt; <span class="pl-c1">vis</span>(n+<span class="pl-c1">1</span>, <span class="pl-c1">0</span>);  <span class="pl-c"><span class="pl-c">//</span> 标记数组：vis[j]=1 表示节点j已确定最短路径</span>
-    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">dist</span>(n+<span class="pl-c1">1</span>, MAX);<span class="pl-c"><span class="pl-c">//</span> 距离数组：dist[j] 表示起点到j的当前最短距离</span>
+    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">dist</span>(n+<span class="pl-c1">1</span>, <span class="pl-c1">MAX</span>);<span class="pl-c"><span class="pl-c">//</span> 距离数组：dist[j] 表示起点到j的当前最短距离</span>
     dist[s] = <span class="pl-c1">0</span>;
 
     <span class="pl-c"><span class="pl-c">//</span> 最多遍历n轮，每轮确定一个节点的最短路径</span>
     <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt;= n; i++) {
         <span class="pl-k">int</span> u = -<span class="pl-c1">1</span>;
-        <span class="pl-k">int</span> min_dist = MAX;
+        <span class="pl-k">int</span> min_dist = <span class="pl-c1">MAX</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> 1. 遍历所有未确定最短路径的节点，找到距离起点最近的节点u</span>
         <span class="pl-k">for</span>(<span class="pl-k">int</span> j = <span class="pl-c1">1</span>; j &lt;= n; j++) {
@@ -1051,7 +1051,7 @@ vector&lt;<span class="pl-k">int</span>&gt; t;
     <span class="pl-k">int</span> n, E;
     cin &gt;&gt; n &gt;&gt; E;  <span class="pl-c"><span class="pl-c">//</span> n:顶点数  E:边数</span>
     Graph a;
-    DSU <span class="pl-smi">dsu</span>(n);     <span class="pl-c"><span class="pl-c">//</span> 创建对应顶点数的并查集</span>
+    <span class="pl-c1">DSU</span> <span class="pl-smi">dsu</span>(n);     <span class="pl-c"><span class="pl-c">//</span> 创建对应顶点数的并查集</span>
     <span class="pl-k">int</span> u, v, w;
 
     <span class="pl-c"><span class="pl-c">//</span> 读取所有边并加入图中</span>
